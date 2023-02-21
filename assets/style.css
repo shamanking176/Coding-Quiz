@@ -1,0 +1,74 @@
+
+
+header {
+  padding: 20px;
+  text-align: center;
+  background: #61aef6;
+  color: #fff;
+  border-bottom:30px #879274;
+}
+.large-font {
+  font-size: 3.5em;
+  text-align:center;
+}
+
+.timer-count {
+  position: absolute;
+  margin-top: 3em;
+  margin-left: 45em;
+  color: black;
+  font-size: larger;
+  font-weight:bolder;
+}
+
+
+
+  button {
+    background: rgb(36, 232, 36);
+    border-radius: 8px;
+    color: #13293d;
+    cursor: pointer;
+    font-size: 2em;
+    letter-spacing: 0.21px;
+    line-height: 16px;
+    max-width: 255px;
+    padding: 20px 52px;
+    text-align: center;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+    transition-timing-function: linear;
+    margin-top: 0.6em;
+  }
+
+  .card {
+    display: flex;
+    margin-top: 300px;
+    margin-left: 35em;
+    background: radial-gradient(circle, rgb(249, 232, 78) 0%, rgba(62, 80, 244, 0.604) 100%);
+    border: 1px solid #eceff1;
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+      rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+    /* padding: 200px;
+    padding-left: 200px; */
+    justify-content: center;
+    width: 80em;
+    height: 35em;
+  }
+  
+  .highscore {
+   margin-left: 35em;
+  }
+.questions{
+  text-align: center;
+  margin-bottom: 1em;
+}
+  .answers{
+    display: block;
+    background-color:white;
+  }
+
+  .word-blanks{
+    margin-top: 4em;
+    text-align: center;
+  }
