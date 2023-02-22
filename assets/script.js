@@ -1,7 +1,7 @@
 
 var questions = document.querySelector(".questions");
 var wordBlank = document.querySelector(".word-blanks");
-var score = document.querySelector(".score");
+var score = document.getElementById("score");
 var startButton = document.querySelector(".start-button");
 var optionEL = document.getElementById("option1");
 var cardEl= document.querySelector(".card");
@@ -9,7 +9,8 @@ var highscoreEl= document.querySelector(".highscore");
 var answersBTN;
 var j=0;
 var blanksLetters=[];
-
+var finalName=[];
+var scoreName = document.querySelector(".scoreName");
 
 var timer=null;
 var timeLimit=60;
@@ -25,34 +26,36 @@ var q=0;
 var question1 ={
   question:"What color is the sky?",
   answers:["blue","black","red","green"],
- correct:0
+ correct:"blue"
 }
 var question2={
   question:"What is 1+1",
   answers:["1","2","3","4"],
-  correct:1
+  correct:"2"
 
 }
 var question3={
   question:"Which of thses animals can swim?",
   answers:["fish","bird","horse","squirrel"],
-  correct:0
+  correct:"fish"
 
 }
 var question4={
   question:"What do you put in food to add flavor",
   answers:["pickles","water","seasoning","juice"],
-  correct:2
+  correct:"seasoning"
 
 }
 var question5={
   question:"What day is Idependence day?",
   answers:["July 4","June 5", " May 10", "March 7"],
-  correct:0
+  correct:"July 4"
 
 }
 
+var answerArray=["blue","2","fish","seasoning","July 4"];
 var questionArray=[question1,question2,question3,question4,question5];
+console.log(questionArray[0].correct);
 
 startButton.addEventListener("click", startGame);
 
@@ -83,51 +86,55 @@ questions.style.display="none"
 highscoreEl.style.display="block";
 renderBlanks();
 document.addEventListener("keydown", function(event) {
-  var key = event.key.toUpperCase();
+  var key = event.key.toLowerCase();
   var alphabetNumericCharacters = "abcdefghijklmnopqrstuvwxyz0123456789 ".split("");
   if (alphabetNumericCharacters.includes(key)) {
     var letterPressed = key;
     enterLetter(letterPressed);
-    console.log(letterPressed);
-    j++;
+    
   }
 })
+highscoreEl.addEventListener("click", function(event){
+  scoreName.textContent= finalName;
+  localStorage.setItem("scoreName", scoreName);
+}
+)
+
 }
 function Correct(){
   scoreCount+=5;
+  console.log("correct");
 }
 
 
 function Incorrect(){
 time-=5;
+console.log("incorrect");
 }
 
 function checkCorrect(){
-if (answersBTN===questionArray[q].answers[questionArray[q].correct]){
+  for(var i =0; i<4; i++){
+if (answersBTN===questionArray[i].correct){
     Correct();
 }
 else{
     Incorrect();
 }
 }
+}
+
 function startTimer(){
     timer = setInterval(() =>{
       timePassed= timePassed +=1;
       time= timeLimit - timePassed;
         document.getElementById("timer-count").innerHTML = "Time:" + time;
-       
+       if(time===0){
+        clearInterval(timer);
+       }
       }, 1000);
 }
 
-function getScore(){
-    var storedScore = localStorage.getItem("scoreCount");
-    if (storedScore === null) {
-        scoreCount = 0;
-      } else {
-        scoreCount = storedScore;
-      }
-      score.textContent = scoreCount;
-}
+
 
 function renderSet(){
 questions.textContent= questionArray[q].question;
@@ -136,14 +143,13 @@ for(var i = 0; i<questionArray[q].answers.length; i++){
 answersBTN = document.createElement("button");
 answersBTN.setAttribute("class","answers");
 answersBTN.textContent=questionArray[q].answers[i];
-answersBTN.onclick=nextSet;
 optionEL.appendChild(answersBTN);
-
+answersBTN.onclick=nextSet;
 }
 }
 
 function renderBlanks() {
-  numBlanks = 3;
+  numBlanks = 10;
   for (var i = 0; i < numBlanks; i++) {
     blanksLetters.push("_");
   } 
@@ -152,13 +158,14 @@ function renderBlanks() {
 
 
 function enterLetter(letter){
-      blanksLetters = letter;
+  wordBlank.textContent = " ";
+  finalName.push(letter);
     
-    wordBlank.textContent = blanksLetters.join(" ");
+    wordBlank.textContent = finalName.join(" ");
   }
 
 
 function setScore(){
-  score.textContent = scoreCount;
-  localStorage.setItem("setCount", scoreCount);
+  localStorage.setItem("scoreCount", scoreCount);
+  document.getElementById("score").innerHTML = "Score" + scoreCount;
 }
