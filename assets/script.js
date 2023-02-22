@@ -24,36 +24,36 @@ var q=0;
 
 
 var question1 ={
-  question:"What color is the sky?",
-  answers:["blue","black","red","green"],
- correct:"blue"
+  question:"Commonly used data types do not include",
+  answers:["strings","booleans","alerts","numbers"],
+ correct:"alerts"
 }
 var question2={
-  question:"What is 1+1",
-  answers:["1","2","3","4"],
-  correct:"2"
+  question:"The condition in an if/else statement is enclosed with____",
+  answers:["quotes","curly brackets","parenthesis","square brackets"],
+  correct:"parenthesis"
 
 }
 var question3={
-  question:"Which of thses animals can swim?",
-  answers:["fish","bird","horse","squirrel"],
-  correct:"fish"
+  question:"Arrays in JavaScript can be used to store___",
+  answers:["numbers and strings","other arrays","booleans","all of the above"],
+  correct:"all of the above"
 
 }
 var question4={
-  question:"What do you put in food to add flavor",
-  answers:["pickles","water","seasoning","juice"],
-  correct:"seasoning"
+  question:"String values must be enclosed within___ when being assigned to variables",
+  answers:["commas","curly brackets","quotes","parenthesis"],
+  correct:"quotes"
 
 }
 var question5={
-  question:"What day is Idependence day?",
-  answers:["July 4","June 5", " May 10", "March 7"],
-  correct:"July 4"
+  question:"A useful tool used during developemnt and debugging for printing content is:",
+  answers:["Javascript","terminal", "for loops", "console.log"],
+  correct:"console.log"
 
 }
 
-var answerArray=["blue","2","fish","seasoning","July 4"];
+var answerArray=["alerts","parenthesis","all of the above","quotes","console.log"];
 var questionArray=[question1,question2,question3,question4,question5];
 console.log(questionArray[0].correct);
 
